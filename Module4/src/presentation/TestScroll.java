@@ -25,7 +25,7 @@ public class TestScroll {
 		
 		driver.get("https://www.amazon.com/");
 		testScroll();
-
+		
 	}
 	
 	public void testScroll() {
