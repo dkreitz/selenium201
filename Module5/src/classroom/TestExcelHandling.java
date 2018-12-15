@@ -23,7 +23,7 @@ public class TestExcelHandling {
 	Sheet mySheet;
 	Row myRow;
 	Cell myCell;
-	String file = "C:\\java\\repos\\selenium201\\Module5\\data.xlsx";
+	String file = "data.xlsx";
 	int rowCount;
 
 	String[][] data = new String[4][2];
@@ -33,7 +33,7 @@ public class TestExcelHandling {
 
 		try {
 
-			System.setProperty("webdriver.chrome.driver", "C:\\java\\tools\\selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "C:\\Code\\Java\\Tools\\Selenium\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
