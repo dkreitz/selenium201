@@ -1,6 +1,0 @@
-WinWait("Open","",5)
-ControlFocus("Open", "", "Edit1")
-Sleep(2000)
-ControlSetText("Open", "", "Edit1", "C:\Users\m1032913\Pictures\maga.png")
-Sleep(2000)
-ControlClick("Open", "", "Button1")
