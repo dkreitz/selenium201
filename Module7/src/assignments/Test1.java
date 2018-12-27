@@ -16,7 +16,7 @@ public class Test1 {
 	 * TestNG assertion to verify this). As the work on one page gets completed take
 	 * a screenshot.
 	 */
-	
+
 	WebDriver driver;
 
 	@Test
@@ -32,9 +32,13 @@ public class Test1 {
 	}
 
 	@Test(dependsOnMethods = { "openBrowser" })
-	public void loginToFacebook() {
-
+	public void openMercuryTours() {
 		driver.get("http://www.facebook.com");
+	}
+
+	@Test(dependsOnMethods = { "openMercuryTours" })
+	public void loginToMercuryTours() {
+
 		driver.findElement(By.cssSelector("#email")).sendKeys("dkreitz@gmail.com");
 		driver.findElement(By.cssSelector("#pass")).sendKeys("password");
 		driver.findElement(By.cssSelector("#loginbutton")).click();
