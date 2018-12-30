@@ -16,46 +16,50 @@ public class BANHomePage {
 	@FindBy(id = "nav")
 	WebElement topNav;
 
-	@FindBy(xpath = "//button[text()=\"I'll Pass\"]")
-	WebElement modalCancelButton;
-
 	public BANHomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	public String getPageTitleText() {
+	public String getHomePageTitle() {
 		return driver.getTitle();
 	}
 
-	public boolean isModalDisplayed() {
-		return modalCancelButton.isDisplayed();
-	}
-
 	public void closeModalDisplay() {
-		modalCancelButton.click();
+
+		try {
+
+			// wait up to 2 seconds to see if the modal window appears, then close it
+			WebDriverWait wait = new WebDriverWait(driver, 2);
+			wait.until(ExpectedConditions
+					.elementToBeClickable(driver.findElement(By.xpath("//button[text()=\"I'll Pass\"]")))).click();
+			System.out.println("Found the modal window and closed it.");
+			Thread.sleep(2000);
+			
+		} catch (Exception e) {
+			
+			// otherwise, just ignore the error if the modal doesn't appear and move on
+			// e.printStackTrace();
+			System.out.println("Couldn't find the modal window this time.");
+			
+		}
+
 	}
 
-	public void hoverOverMenuLink(String menuLinkText) {
+	public void hoverAndClick(String textToHover, String textToClick) {
 
-		Actions actions = new Actions(driver);
-		WebElement menuLink = topNav.findElement(By.linkText(menuLinkText));
-		actions.moveToElement(menuLink).perform();
+		// wait up to 5 seconds for these elements to appear
+		WebDriverWait wait = new WebDriverWait(driver, 5);
 
-	}
+		// hover over the textToHover link
+		WebElement hoverLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(textToHover)));
+		Actions action = new Actions(driver);
+		action.moveToElement(hoverLink, 10, 5).build().perform();
 
-	public void clickSubMenuLink(String submenuLinkText) {
-		
-		topNav.findElement(By.linkText(submenuLinkText)).click();
-		
-//		WebDriverWait wait = new WebDriverWait(driver, 5);
-//		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector_For_Element_To_Be_Click_After_Hover)));
-//		driver.findElement(By.cssSelector(selector_For_Element_To_Be_Click_After_Hover)).click();
-		
-	}
+		// click the textToClick link
+		WebElement clickLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(textToClick)));
+		clickLink.click();
 
-	public void hoverAndClickMenuLink(String menuLinkText, String submenuLinkText) {
-		topNav.findElement(By.linkText(menuLinkText)).findElement(By.linkText(submenuLinkText)).click();
 	}
 
 }

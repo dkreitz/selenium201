@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="B&amp;N Test Suite">
+	<test name="B&amp;N Test Features">
+		<classes>
+			<class name="ban.BiographyTest" />
+		</classes>
+	</test>
+</suite>

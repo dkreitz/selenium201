@@ -26,7 +26,11 @@ public class BiographyTest {
 		driver.get("https://www.barnesandnoble.com/");
 
 		BANHomePage myHomePage = new BANHomePage(driver);
-		String actualTitle = myHomePage.getPageTitleText();
+
+		// close the modal window if it's displayed
+		myHomePage.closeModalDisplay();
+		
+		String actualTitle = myHomePage.getHomePageTitle();
 		String expectedTitle = "Online Bookstore: Books, NOOK ebooks, Music, Movies & Toys | Barnes & Noble®";
 
 		assertEquals(actualTitle, expectedTitle);
@@ -37,19 +41,17 @@ public class BiographyTest {
 	public void test_GoToBiographyPage() {
 
 		BANHomePage myHomePage = new BANHomePage(driver);
-		
-		// close the modal window if it's displayed
-		if (myHomePage.isModalDisplayed()) {
-			myHomePage.closeModalDisplay();
-		}
 
-		// hover over "Books" to open the sub-menu
-		// and click the "Biography" sub-menu link
-		myHomePage.hoverOverMenuLink("Books");
-		myHomePage.clickSubMenuLink("Biography");
-//		myHomePage.hoverAndClickMenuLink("Books", "Biography");
+		// hover over "Books" and click the "Biography" link
+		myHomePage.hoverAndClick("Books", "Biography");
 
 		// verify text "Bestsellers" and "Biography"
+		BANLandingPage myLandingPage = new BANLandingPage(driver);
+		String landingPageTitle = myLandingPage.getLandingPageTitle();
+		String actualTitle = landingPageTitle.split("\\|")[0].trim();
+		String expectedTitle = "Biography, Books";
+
+		assertEquals(actualTitle, expectedTitle);
 
 	}
 
@@ -59,8 +61,8 @@ public class BiographyTest {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 	}
 
 	@AfterTest

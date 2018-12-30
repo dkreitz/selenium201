@@ -1,20 +1,19 @@
 package ban;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BANBiographyPage {
+public class BANLandingPage {
 
 	WebDriver driver;
 	
-	@FindBy()
-	WebElement obj;
-
-	public BANBiographyPage(WebDriver driver) {
+	public BANLandingPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+	}
+
+	public String getLandingPageTitle() {
+		return driver.getTitle();
 	}
 
 }
