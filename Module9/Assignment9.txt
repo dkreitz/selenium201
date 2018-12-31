@@ -1,0 +1,8 @@
+Create a Hybrid Framework 
+to test 5 negative scenarios each 
+on https://facebook.com, http://newtours.demoaut.com, and https://linkedin.com.
+(15 negative scenarios in total) 
+
+Poll each of them separately 
+and verify the response received every time 
+whether it matches to the expected message or not.
