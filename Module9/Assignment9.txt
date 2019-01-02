@@ -1,8 +1,27 @@
-Create a Hybrid Framework 
-to test 5 negative scenarios each 
+Create a Hybrid Framework to test 5 negative scenarios each 
 on https://facebook.com, http://newtours.demoaut.com, and https://linkedin.com.
-(15 negative scenarios in total) 
 
-Poll each of them separately 
-and verify the response received every time 
+Poll each of them separately and verify the response received every time 
 whether it matches to the expected message or not.
+
+
+=Facebook=
+1. You enter an incorrect password
+2. You try to sign up without entering a first name
+3. You try to sign up without entering a last name
+4. You try to sign up without entering an email address
+5. You try to sign up using an invalid email address format
+
+=LinkedIn=
+1. You enter an incorrect password
+2. You try to sign up without entering a first name
+3. You try to sign up without entering a last name
+4. You try to sign up without entering an email address
+5. You try to sign up using an invalid email address format
+
+=NewTours=
+1. You try to sign on without entering any credentials
+2. You try to register without entering a user name
+3. You try to register without entering a password
+4. You try to book a flight without signing on
+5. You try to book a flight without giving a credit card number
