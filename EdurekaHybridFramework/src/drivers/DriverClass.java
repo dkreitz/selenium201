@@ -12,7 +12,7 @@ public class DriverClass {
 
 	private static KeywordUtility oKwDriver;
 	private static ExcelDriver oExcelDriver;
-	private static String sDriverPropertyFile = "C:\\Code\\Java\\Projects\\IntroToSelenium_Workspace\\EdurekaHybridFramework\\src\\conf\\AutomationInput.properties";
+	private static String sDriverPropertyFile = "C:\\Code\\Java\\Repos\\EdurekaHybridFramework\\src\\conf\\AutomationInput.properties";
 	private static Properties oDriverProperties;
 	private static String sInputFileFolder;
 	private static String sResultFolder;
