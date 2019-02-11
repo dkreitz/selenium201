@@ -85,8 +85,7 @@ public class ExcelDriver {
 
 			oFileReader = new FileInputStream(sFileName);
 			sExcelFileName = sFileName;
-			//oExcelWorkbook = WorkbookFactory.create(oFileReader);
-			oExcelWorkbook = new XSSFWorkbook(oFileReader);
+			oExcelWorkbook = WorkbookFactory.create(oFileReader);
 
 		} catch (Exception e) {
 			e.printStackTrace();
