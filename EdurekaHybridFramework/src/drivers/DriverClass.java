@@ -12,7 +12,7 @@ public class DriverClass {
 
 	private static KeywordUtility oKwDriver;
 	private static ExcelDriver oExcelDriver;
-	private static String sDriverPropertyFile = "C:\\Code\\Java\\Repos\\EdurekaHybridFramework\\src\\conf\\AutomationInput.properties";
+	private static String sDriverPropertyFile = System.getProperty("user.dir") + "\\src\\conf\\AutomationInput.properties";
 	private static Properties oDriverProperties;
 	private static String sInputFileFolder;
 	private static String sResultFolder;
@@ -21,6 +21,8 @@ public class DriverClass {
 
 	public static void main(String[] args) {
 
+		System.out.println(System.getProperty("user.dir"));
+		
 		oDriverProperties = Utils.getProperties(sDriverPropertyFile);
 		sInputFileFolder = oDriverProperties.getProperty("InputFileFolder").trim();
 		sMainDriverInputFile = oDriverProperties.getProperty("DriverInputFile").trim();
