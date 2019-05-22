@@ -1,0 +1,6 @@
+WinWait("Save As", "", 5)
+ControlFocus("Save As", "", "Edit1")
+Sleep(2000)
+ControlSetText("Save As", "", "Edit1", "C:\MusicAssignment\selenium.png")
+Sleep(2000)
+ControlClick("Save As", "", "Button2")
