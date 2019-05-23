@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class Assignment1 {
 	
@@ -20,7 +21,7 @@ public class Assignment1 {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
-		driver.get("https://www.google.com/search?q=selenium&tbm=isch");
+		driver.get("https://www.last.fm/music/+free-music-downloads");
 
 		useAutoITForDownload();
 
@@ -32,11 +33,22 @@ public class Assignment1 {
 			
 			WebElement element = driver.findElement((By.xpath("//*[@id=\"freedownloads-section\"]/table/tbody/tr[1]/td[3]/a")));
 			
+			Actions myactions = new Actions(driver);
+			myactions.contextClick(element).perform();
 			
-			driver.findElement(By.className("S3Wjs")).click();
-			driver.findElement(By.linkText("Upload an image")).click();
-			driver.findElement(By.id("qbfile")).click();
 			Runtime.getRuntime().exec("autoit-script.exe");
+			/* Executes the following AutoIt source:
+			 * 
+			 * 		WinWait("Save As", "", 5)
+			 * 		ControlFocus("Save As", "", "Edit1")
+			 * 		Sleep(2000)
+			 * 		ControlSetText("Save As", "", "Edit1", "C:\MusicAssignment\mysong.mp3")
+			 * 		Sleep(2000)
+			 * 		ControlClick("Save As", "", "Button2")
+			 * 
+			 */
+			
+			System.out.println("The file has been saved successfully");
 
 		} catch (IOException e) {
 			e.printStackTrace();
