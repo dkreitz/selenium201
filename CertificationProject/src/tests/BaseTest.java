@@ -1,4 +1,4 @@
-package com.demoaut.newtours.TestScripts;
+package tests;
 
 import java.io.File;
 
@@ -15,12 +15,11 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import com.demoaut.newtours.Pages.BookAFlight;
-import com.demoaut.newtours.Pages.FlightFinder;
-import com.demoaut.newtours.Pages.Login;
-import com.demoaut.newtours.Pages.RegisterUser;
-import com.demoaut.newtours.Pages.SelectFlight;
-//import com.zScalerWorkAround.zScalerWorkAround;
+import pages.BookFlight;
+import pages.FlightFinder;
+import pages.Login;
+import pages.RegisterUser;
+import pages.SelectFlight;
 
 public class BaseTest {
 	
@@ -29,11 +28,12 @@ public class BaseTest {
 	Login login;
 	FlightFinder flightFinder;
 	SelectFlight selectFlight;
-	BookAFlight bookAFlight;
+	BookFlight bookFlight;
 	RegisterUser registerUser;
 	
 	@BeforeMethod
 	public void openBrowser() throws Exception {
+		
 		System.setProperty("webdriver.chrome.driver", "C:\\Code\\Java\\Tools\\Selenium\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -41,14 +41,14 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
 		
-//		zScalerWorkAround.zScalerWorkAround(driver);
 		driver.get("http://newtours.demoaut.com/");
 
 		login = new Login(driver);
 		flightFinder = new FlightFinder(driver);
 		selectFlight = new SelectFlight(driver);
-		bookAFlight = new BookAFlight(driver);	
+		bookFlight = new BookFlight(driver);	
 		registerUser = new RegisterUser(driver);
+		
 	}
 	
 	@AfterMethod
@@ -57,6 +57,7 @@ public class BaseTest {
 	}
 	
 	public static void takeScreenshot() throws Exception {
+		
 		String timeStamp;
 		File screenShotName;
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -66,8 +67,8 @@ public class BaseTest {
 		
 		String filePath = screenShotName.toString(); 
 		String path = ("<img src=\"file://" + filePath + "\" alt=\"\"/></img>");
-		Reporter.log(path); 			
+		Reporter.log(path);
+		
 	}
-
 	
 }

@@ -1,18 +1,21 @@
-package com.demoaut.newtours.TestScripts;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class ValidateCredentialsTest extends BaseTest {
+public class CheckCredentialsTest extends BaseTest {
 		
 	@Test
-	public void credentialVerification() throws Exception {
-		login.applicationLogin("mercury", "mercury");
+	public void checkCredentials() throws Exception {
+		
+		login.applicationLogin("jschmoe", "mcnasty");
+
 		String expectedTitle = "Find a Flight: Mercury Tours:";
 		String actualTitle = driver.getTitle();
-		
 		Assert.assertEquals(expectedTitle, actualTitle);
+
 		takeScreenshot();
+		
 	}
 }
