@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.demoaut.newtours.TestScripts.RegisterNewUserTest">
+        <methods>
+          <include name="registerNewUser"/>
+          <include name="closeBrowser"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- com.demoaut.newtours.TestScripts.RegisterNewUserTest -->
+      <class name="com.demoaut.newtours.TestScripts.BookTicketTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- com.demoaut.newtours.TestScripts.BookTicketTest -->
+      <class name="com.demoaut.newtours.TestScripts.ValidateCredentialsTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- com.demoaut.newtours.TestScripts.ValidateCredentialsTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
